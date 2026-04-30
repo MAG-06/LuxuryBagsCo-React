@@ -1,0 +1,88 @@
+/* contenedor */
+.container {
+  width: 90%;
+  max-width: 900px;
+  margin: 25px auto;
+}
+
+/* caja producto */
+.product-box {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* imagen */
+.product-img img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  display: block;
+}
+
+/* info */
+.info {
+  padding: 18px;
+}
+
+.info h2 {
+  margin: 0;
+  font-size: 18px;
+  color: #7a5c3a;
+}
+
+.name {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 6px;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.desc-title {
+  font-weight: bold;
+  margin-top: 15px;
+  color: #7a5c3a;
+}
+
+.desc {
+  margin-top: 6px;
+}
+
+/* botones */
+.buttons {
+  margin-top: 18px;
+  text-align: center;
+}
+
+button {
+  padding: 10px;
+  width: 220px;
+  margin: 6px;
+  background: #1a1a1a;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #7a5c3a;
+}
+
+.secondary {
+  background: #555;
+}
+
+.secondary:hover {
+  background: #333;
+}
+
+/* evitar azul del link */
+.back-link {
+  text-decoration: none;
+}
