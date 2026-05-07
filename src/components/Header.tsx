@@ -16,6 +16,7 @@ export default function Header() {
           <Link to="/">Blog</Link>
           <Link to="/">Promociones</Link>
           <Link to="/">Comunidad</Link>
+          <Link to="/carrito">Carrito</Link>
 
         </div>
 
