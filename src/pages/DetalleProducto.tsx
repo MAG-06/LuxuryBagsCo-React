@@ -1,10 +1,17 @@
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { Bolso } from "../models/Bolso"
+import { CurrencyService } from "../services/CurrencyService"
+import { CarritoService } from "../services/CarritoService"
+import { formatoCOP, formatoUSD } from "../utils/formatPrice"
 import "../css/Detalle.css"
+
+const currencyService = new CurrencyService()
+const carritoService = new CarritoService()
 
 export default function DetalleProducto() {
   const [bolso, setBolso] = useState<Bolso | null>(null)
+  const [tasaCOP, setTasaCOP] = useState<number | null>(null)
 
   useEffect(() => {
     const data = localStorage.getItem("bolsoSeleccionado")
@@ -12,7 +19,22 @@ export default function DetalleProducto() {
     if (data) {
       setBolso(JSON.parse(data))
     }
+
+    currencyService
+      .obtenerTasaUSDaCOP()
+      .then((tasa) => setTasaCOP(tasa))
+      .catch((error) => {
+        console.error(error)
+        setTasaCOP(null)
+      })
   }, [])
+
+  const agregarAlCarrito = () => {
+    if (!bolso) return
+
+    carritoService.agregarBolso(bolso)
+    alert("Bolso agregado al carrito")
+  }
 
   if (!bolso) {
     return (
@@ -33,9 +55,14 @@ export default function DetalleProducto() {
         <div className="info">
           <h2>{bolso.marca}</h2>
           <p className="name">{bolso.nombre}</p>
-          <p className="price">
-            ${bolso.precio.toLocaleString("es-CO")}
-          </p>
+
+          <p className="price">{formatoCOP(bolso.precio)}</p>
+
+          {tasaCOP && (
+            <p className="price-usd">
+              {formatoUSD(bolso.precio / tasaCOP)}
+            </p>
+          )}
 
           <p className="desc-title">Descripción</p>
           <p className="desc">{bolso.descripcion}</p>
@@ -46,7 +73,9 @@ export default function DetalleProducto() {
           {bolso.detalle3 && <p className="desc">{bolso.detalle3}</p>}
 
           <div className="buttons">
-            <button>🛒 Agregar al carrito</button>
+            <button onClick={agregarAlCarrito}>
+              🛒 Agregar al carrito
+            </button>
 
             <Link to="/" className="back-link">
               <button className="secondary">⬅ Volver</button>
