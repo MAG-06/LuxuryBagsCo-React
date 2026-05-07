@@ -30,6 +30,10 @@ body {
   justify-content: space-between;
 }
 
+.logo {
+  flex-shrink: 0;
+}
+
 .logo h1 {
   font-size: 18px;
   border: 2px solid #1a1a1a;
@@ -37,10 +41,15 @@ body {
   padding: 6px 10px;
 }
 
+.menu {
+  flex: 1;
+  text-align: center;
+}
+
 .menu a {
   text-decoration: none;
   color: #1a1a1a;
-  margin-right: 12px;
+  margin: 0 6px;
   font-size: 14px;
 }
 
@@ -52,15 +61,18 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-  flex-wrap: wrap;
+  flex-shrink: 0;
 }
 
 .auth button {
   background: #1a1a1a;
   color: white;
   border: none;
-  padding: 8px 14px;
+  padding: 7px 14px;
   cursor: pointer;
+  font-size: 13px;
+  white-space: nowrap;
+  border-radius: 4px;
 }
 
 .auth button:hover {
@@ -195,8 +207,15 @@ body {
 }
 
 @keyframes slideIn {
-  from { opacity: 0; transform: translateX(20px); }
-  to   { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .cart-item img {
@@ -309,7 +328,9 @@ body {
   background: #7a5c3a !important;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
+  padding: 6px 10px !important;
+  font-size: 13px;
 }
 
 .cart-btn:hover {
@@ -327,6 +348,66 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+}
+
+/* ─── CUPON & MENSAJES CARRITO ─── */
+.cart-coupon {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.cart-coupon input {
+  flex: 1;
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.cart-coupon input:focus {
+  border-color: #7a5c3a;
+}
+
+.btn-coupon {
+  padding: 8px 14px;
+  background: #2b1f12;
+  color: white;
+  border: none;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.btn-coupon:hover {
+  background: #7a5c3a;
+}
+
+.cart-message {
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  background: #f0ece6;
+  text-align: center;
+  animation: slideIn 0.25s ease;
+}
+
+.cart-discount-info {
+  font-size: 13px;
+  color: #7a5c3a;
+  font-weight: bold;
+  margin-bottom: 8px;
+  padding: 6px 10px;
+  background: rgba(122, 92, 58, 0.08);
+  border-radius: 4px;
+  text-align: center;
 }
 
 /* ─── CONTENIDO GENÉRICO ───*/

@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { Link } from "react-router-dom"
 import { Bolso } from "../models/Bolso"
 import { CarritoService } from "../services/CarritoService"
@@ -12,9 +13,12 @@ type Props = {
 const carritoService = new CarritoService()
 
 export default function ProductCard({ bolso, tasaCOP, onAgregar }: Props) {
+  const [agregado, setAgregado] = useState(false)
+
   const agregarAlCarrito = () => {
     carritoService.agregarBolso(bolso)
-    alert("Bolso agregado al carrito")
+    setAgregado(true)
+    setTimeout(() => setAgregado(false), 2000)
     onAgregar?.()
   }
 
@@ -41,8 +45,8 @@ export default function ProductCard({ bolso, tasaCOP, onAgregar }: Props) {
         )}
       </Link>
 
-      <button onClick={agregarAlCarrito}>
-        🛒 Agregar al carrito
+      <button onClick={agregarAlCarrito} className={agregado ? "added" : ""}>
+        {agregado ? "✅ ¡Agregado!" : "🛒 Agregar al carrito"}
       </button>
     </div>
   )

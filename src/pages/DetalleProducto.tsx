@@ -12,6 +12,7 @@ const carritoService = new CarritoService()
 export default function DetalleProducto() {
   const [bolso, setBolso] = useState<Bolso | null>(null)
   const [tasaCOP, setTasaCOP] = useState<number | null>(null)
+  const [agregado, setAgregado] = useState(false)
 
   useEffect(() => {
     const data = localStorage.getItem("bolsoSeleccionado")
@@ -33,7 +34,8 @@ export default function DetalleProducto() {
     if (!bolso) return
 
     carritoService.agregarBolso(bolso)
-    alert("Bolso agregado al carrito")
+    setAgregado(true)
+    setTimeout(() => setAgregado(false), 2000)
   }
 
   if (!bolso) {
@@ -73,8 +75,8 @@ export default function DetalleProducto() {
           {bolso.detalle3 && <p className="desc">{bolso.detalle3}</p>}
 
           <div className="buttons">
-            <button onClick={agregarAlCarrito}>
-              🛒 Agregar al carrito
+            <button onClick={agregarAlCarrito} style={agregado ? { background: "#4a7a5c" } : {}}>
+              {agregado ? "✅ ¡Agregado!" : "🛒 Agregar al carrito"}
             </button>
 
             <Link to="/" className="back-link">
