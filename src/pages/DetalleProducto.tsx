@@ -4,6 +4,9 @@ import { Bolso } from "../models/Bolso"
 import { CurrencyService } from "../services/CurrencyService"
 import { CarritoService } from "../services/CarritoService"
 import { formatoCOP, formatoUSD } from "../utils/formatPrice"
+
+import Header from "../components/Header"
+import Footer from "../components/Footer"
 import "../css/Detalle.css"
 
 const currencyService = new CurrencyService()
@@ -48,43 +51,49 @@ export default function DetalleProducto() {
   }
 
   return (
-    <div className="container">
-      <div className="product-box">
-        <div className="product-img">
-          <img src={bolso.imagen} alt={bolso.nombre} />
-        </div>
+    <>
+      <Header />
+      
+      <div className="container">
+        <div className="product-box">
+          <div className="product-img">
+            <img src={bolso.imagen} alt={bolso.nombre} />
+          </div>
 
-        <div className="info">
-          <h2>{bolso.marca}</h2>
-          <p className="name">{bolso.nombre}</p>
+          <div className="info">
+            <h2>{bolso.marca}</h2>
+            <p className="name">{bolso.nombre}</p>
 
-          <p className="price">{formatoCOP(bolso.precio)}</p>
+            <p className="price">{formatoCOP(bolso.precio)}</p>
 
-          {tasaCOP && (
-            <p className="price-usd">
-              {formatoUSD(bolso.precio / tasaCOP)}
-            </p>
-          )}
+            {tasaCOP && (
+              <p className="price-usd">
+                {formatoUSD(bolso.precio / tasaCOP)}
+              </p>
+            )}
 
-          <p className="desc-title">Descripción</p>
-          <p className="desc">{bolso.descripcion}</p>
+            <p className="desc-title">Descripción</p>
+            <p className="desc">{bolso.descripcion}</p>
 
-          <p className="desc-title">Detalles</p>
-          <p className="desc">{bolso.detalle1}</p>
-          {bolso.detalle2 && <p className="desc">{bolso.detalle2}</p>}
-          {bolso.detalle3 && <p className="desc">{bolso.detalle3}</p>}
+            <p className="desc-title">Detalles</p>
+            <p className="desc">{bolso.detalle1}</p>
+            {bolso.detalle2 && <p className="desc">{bolso.detalle2}</p>}
+            {bolso.detalle3 && <p className="desc">{bolso.detalle3}</p>}
 
-          <div className="buttons">
-            <button onClick={agregarAlCarrito} style={agregado ? { background: "#4a7a5c" } : {}}>
-              {agregado ? "✅ ¡Agregado!" : "🛒 Agregar al carrito"}
-            </button>
+            <div className="buttons">
+              <button onClick={agregarAlCarrito} style={agregado ? { background: "#4a7a5c" } : {}}>
+                {agregado ? "✅ ¡Agregado!" : "🛒 Agregar al carrito"}
+              </button>
 
-            <Link to="/" className="back-link">
-              <button className="secondary">⬅ Volver</button>
-            </Link>
+              <Link to="/" className="back-link">
+                <button className="secondary">⬅ Volver</button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+
+      <Footer />
+    </>
   )
 }
