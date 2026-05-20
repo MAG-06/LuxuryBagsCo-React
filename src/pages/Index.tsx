@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { Bolso } from "../models/Bolso"
 import { BolsoService } from "../services/BolsoService"
 import { CurrencyService } from "../services/CurrencyService"
 import ProductCard from "../components/ProductCard"
 import Hero from "../components/Hero"
+import Header from "../components/Header"
+import Footer from "../components/Footer"
 
 import "../css/Index.css"
 
@@ -11,10 +14,19 @@ const bolsoService = new BolsoService()
 const currencyService = new CurrencyService()
 
 export default function Index() {
+  const navigate = useNavigate()
+
   const [bolsos, setBolsos] = useState<Bolso[]>([])
   const [tasaCOP, setTasaCOP] = useState<number | null>(null)
 
   useEffect(() => {
+    const emailLogueado = localStorage.getItem("CurrentUser")
+
+    if (!emailLogueado) {
+      navigate("/login")
+      return
+    }
+
     const data = bolsoService.buscarTodosLosBolsosPorEstado(true)
     setBolsos(data)
 
@@ -29,6 +41,7 @@ export default function Index() {
 
   return (
     <>
+      <Header />
       <Hero />
 
       <div className="products">
@@ -54,6 +67,7 @@ export default function Index() {
           )}
         </div>
       </div>
+      <Footer />
     </>
   )
 }
