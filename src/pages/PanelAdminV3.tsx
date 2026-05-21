@@ -2,7 +2,12 @@ import Hero from "../components/Hero"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
+import { Cupon } from "../models/Cupon"
+import { CuponService } from "../services/CuponService"
+
 import "../css/PanelAdminV3.css"
+
+const cuponService = new CuponService()
 
 export default function PanelAdminCupones() {
 
@@ -18,18 +23,57 @@ export default function PanelAdminCupones() {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
-        const nuevoCupon = {
-            codigo,
-            porcentaje,
-            descripcion,
-            titulo,
-            destacado,
-            estado
+        const codigoLimpio = codigo.trim()
+        const porcentajeNum = Number(porcentaje)
+        const descripcionLimpia = descripcion.trim()
+        const tituloLimpio = titulo.trim()
+
+        if (!codigoLimpio) {
+            alert("Debe ingresar un código para el cupón")
+            return
         }
 
-        console.log(nuevoCupon)
+        if (isNaN(porcentajeNum) || porcentajeNum <= 0 || porcentajeNum > 100) {
+            alert("Ingrese un porcentaje válido entre 1 y 100")
+            return
+        }
 
-        // Aquí puedes hacer el fetch al backend
+        if (!descripcionLimpia) {
+            alert("Debe ingresar una descripción para el cupón")
+            return
+        }
+
+        if (!tituloLimpio) {
+            alert("Debe ingresar un título para el cupón")
+            return
+        }
+
+        if (cuponService.existeCupon(codigoLimpio)) {
+            alert("Ya existe un cupón con ese código")
+            return
+        }
+
+        const tituloDescuento = porcentajeNum + "% OFF"
+
+        const nuevoCupon = new Cupon(
+            codigoLimpio,
+            porcentajeNum,
+            descripcionLimpia,
+            tituloDescuento,
+            destacado,
+            estado
+        )
+
+        cuponService.agregarCupon(nuevoCupon)
+
+        alert("Cupón guardado correctamente")
+
+        setCodigo("")
+        setPorcentaje("")
+        setDescripcion("")
+        setTitulo("")
+        setDestacado(false)
+        setEstado(true)
 
         navigate("/promociones")
     }
