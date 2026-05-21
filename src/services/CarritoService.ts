@@ -5,9 +5,9 @@ import { Cupon } from "../models/Cupon"
 const KEY_CARRITO = "Carrito"
 
 const CUPONES: Cupon[] = [
-  new Cupon("Descuento", 10),
-  new Cupon("Nuevo Usuario", 20),
-  new Cupon("Increible Descuento", 40),
+  new Cupon("Descuento", 10, "descuento exclusivo", "10% OFF", false, true),
+  new Cupon("Nuevo Usuario", 20, "promoción para nuevos usuarios", "20% OFF", true, true),
+  new Cupon("Increible Descuento", 40, "rebaja increíble por tiempo limitado", "40% OFF", true, true),
 ]
 
 export class CarritoService {

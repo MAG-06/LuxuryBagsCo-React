@@ -95,7 +95,7 @@ export default function PanelAdmin() {
       return
     }
 
-    const bolso = new Bolso(Date.now(),marcaBolso,nombreBolso,precioBolso,descripcionBolso,detallePrincipal,detalleOpcional2,detalleOpcional3,imagenBolso,false)
+    const bolso = new Bolso(Date.now(), marcaBolso, nombreBolso, precioBolso, descripcionBolso, detallePrincipal, detalleOpcional2, detalleOpcional3, imagenBolso, false)
 
     const bolsos = bolsoService.getBolsos()
     bolsos.push(bolso)
@@ -224,6 +224,16 @@ export default function PanelAdmin() {
               </button>
             </Link>
           </div>
+
+          <div>
+            <Link to="/panel-admin-v3">
+              <button type="button" className="btn-admin">
+                Agregar Cupon
+              </button>
+            </Link>
+          </div>
+
+
         </div>
       </section>
     </>
