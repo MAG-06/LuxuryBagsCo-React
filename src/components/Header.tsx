@@ -71,7 +71,7 @@ export default function Header() {
             <Link to="/">Marcas</Link>
             <Link to="/">Tipos</Link>
             <Link to="/">Blog</Link>
-            <Link to="/">Promociones</Link>
+            <Link to="/promociones">Promociones</Link>
             <Link to="/">Comunidad</Link>
           </div>
 

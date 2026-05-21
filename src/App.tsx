@@ -6,6 +6,8 @@ import Login from "./pages/Login"
 import PanelAdmin from "./pages/PanelAdmin"
 import PanelAdminV2 from "./pages/PanelAdminV2"
 import Perfil from "./pages/Perfil"
+import Promociones from "./pages/Promociones"
+import PanelAdminV3 from "./pages/PanelAdminV3"
 
 
 export default function App() {
@@ -22,6 +24,8 @@ export default function App() {
         <Route path="/panel-admin-v2" element={<PanelAdminV2 />} />
 
         <Route path="/perfil" element={<Perfil />} />
+        <Route path="/promociones" element={<Promociones />} />
+        <Route path="/panel-admin-v3" element={<PanelAdminV3 />} />
       </Routes>
 
 
