@@ -8,6 +8,8 @@ import PanelAdminV2 from "./pages/PanelAdminV2"
 import Perfil from "./pages/Perfil"
 import Promociones from "./pages/Promociones"
 import PanelAdminV3 from "./pages/PanelAdminV3"
+import Pago from "./pages/Pago"
+import Factura from "./pages/Factura"
 
 
 export default function App() {
@@ -26,6 +28,8 @@ export default function App() {
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/promociones" element={<Promociones />} />
         <Route path="/panel-admin-v3" element={<PanelAdminV3 />} />
+        <Route path="/pago" element={<Pago />} />
+        <Route path="/factura" element={<Factura />} />
       </Routes>
 
 

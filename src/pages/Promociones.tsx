@@ -1,18 +1,31 @@
+import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
-import HeroPromociones from "../components/HeroPromociones"
+import Header from "../components/Header"
+import Hero from "../components/Hero"
+import Footer from "../components/Footer"
 import PromoCard from "../components/PromoCard"
+
+import { Cupon } from "../models/Cupon"
+import { CuponService } from "../services/CuponService"
 
 import "../css/Promociones.css"
 
+const cuponService = new CuponService()
+
 export default function Promociones() {
 
+  const [cupones, setCupones] = useState<Cupon[]>([])
 
-// aqui debe obtener los cupones del local storage
+  useEffect(() => {
+    const cuponesActivos = cuponService.getCuponesActivos()
+    setCupones(cuponesActivos)
+  }, [])
 
   return (
     <>
-      <HeroPromociones />
+      <Header />
+      <Hero />
 
       <div className="promociones-container">
         <h2>Nuestros cupones disponibles</h2>
@@ -23,28 +36,20 @@ export default function Promociones() {
 
         <div className="promociones-grid">
 
-          <PromoCard
-            descuento="10% OFF"
-            titulo="Descuento"
-            descripcion="Obtén un 10% de descuento en tu compra."
-            codigo="Descuento"
-            
-          />
-
-          <PromoCard
-            descuento="20% OFF"
-            titulo="Nuevo Usuario"
-            descripcion="Promoción especial para quienes realizan su primera compra."
-            codigo="Nuevo Usuario"
-          />
-
-          <PromoCard
-            descuento="40% OFF"
-            titulo="Increible Descuento"
-            descripcion="Aprovecha una rebaja increíble por tiempo limitado."
-            codigo="Increible Descuento"
-            destacado
-          />
+          {cupones.length === 0 ? (
+            <p>No hay cupones disponibles en este momento.</p>
+          ) : (
+            cupones.map((cupon) => (
+              <PromoCard
+                key={cupon.codigo}
+                descuento={cupon.titulo}
+                titulo={cupon.codigo}
+                descripcion={cupon.descripcion}
+                codigo={cupon.codigo}
+                destacado={cupon.destacado}
+              />
+            ))
+          )}
 
         </div>
 
@@ -61,6 +66,8 @@ export default function Promociones() {
           </Link>
         </div>
       </div>
+
+      <Footer />
     </>
   )
 }

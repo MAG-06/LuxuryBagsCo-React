@@ -1,14 +1,11 @@
 import { Bolso } from "../models/Bolso"
 import { Carrito } from "../models/Carrito"
 import { Cupon } from "../models/Cupon"
+import { CuponService } from "./CuponService"
 
 const KEY_CARRITO = "Carrito"
 
-const CUPONES: Cupon[] = [
-  new Cupon("Descuento", 10, "descuento exclusivo", "10% OFF", false, true),
-  new Cupon("Nuevo Usuario", 20, "promoción para nuevos usuarios", "20% OFF", true, true),
-  new Cupon("Increible Descuento", 40, "rebaja increíble por tiempo limitado", "40% OFF", true, true),
-]
+const cuponService = new CuponService()
 
 export class CarritoService {
   getCarrito(): Carrito {
@@ -77,11 +74,7 @@ export class CarritoService {
   aplicarCupon(codigoIngresado: string): Cupon | null {
     const carrito = this.getCarrito()
 
-    const codigoLimpio = codigoIngresado.trim().toLowerCase()
-
-    const cupon = CUPONES.find(
-      (c) => c.codigo.toLowerCase() === codigoLimpio
-    )
+    const cupon = cuponService.buscarPorCodigo(codigoIngresado)
 
     if (!cupon) return null
 
@@ -116,6 +109,10 @@ export class CarritoService {
     if (!carrito.cupon) return total
 
     return total - total * (carrito.cupon.porcentaje / 100)
+  }
+
+  vaciarCarrito(): void {
+    localStorage.removeItem(KEY_CARRITO)
   }
 
   formatearPrecio(valor: number): string {

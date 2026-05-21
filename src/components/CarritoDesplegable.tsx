@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback } from "react"
+import { useNavigate } from "react-router-dom"
 import { Carrito } from "../models/Carrito"
 import { CarritoService } from "../services/CarritoService"
 import { CurrencyService } from "../services/CurrencyService"
@@ -13,6 +14,7 @@ type Props = {
 }
 
 export default function CartDropdown({ isOpen, onClose }: Props) {
+  const navigate = useNavigate()
   const [carrito, setCarrito] = useState<Carrito>(carritoService.getCarrito())
   const [codigoCupon, setCodigoCupon] = useState("")
   const [mensaje, setMensaje] = useState("")
@@ -205,7 +207,7 @@ export default function CartDropdown({ isOpen, onClose }: Props) {
               </p>
             )}
 
-            <button className="btn-checkout">
+            <button className="btn-checkout" onClick={() => { onClose(); navigate("/pago") }}>
               Proceder al pago
             </button>
           </div>
