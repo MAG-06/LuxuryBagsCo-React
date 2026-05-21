@@ -111,6 +111,10 @@ export class CarritoService {
     return total - total * (carrito.cupon.porcentaje / 100)
   }
 
+  vaciarCarrito(): void {
+    localStorage.removeItem(KEY_CARRITO)
+  }
+
   formatearPrecio(valor: number): string {
     return "$" + valor.toLocaleString("es-CO")
   }

@@ -50,6 +50,21 @@ export class CuponService {
         return cupones.filter((c) => c.estado === true)
     }
 
+    //metodo para cambiar el estado de el cupon para poner inactivo o activo y asi mostrarlo en la page promociones 
+    cambiarEstadoCupon(codigo: string, estado: boolean): boolean {
+        const cupones = this.getCupones()
+        const cupon = cupones.find(
+            (c) => c.codigo.toLowerCase() === codigo.trim().toLowerCase()
+        )
+
+        if (!cupon) return false
+
+        cupon.estado = estado
+        this.saveCupones(cupones)
+
+        return true
+    }
+
     // metodo para buscar un cupon por codigo
     buscarPorCodigo(codigo: string): Cupon | null {
         const cupones = this.getCuponesActivos()

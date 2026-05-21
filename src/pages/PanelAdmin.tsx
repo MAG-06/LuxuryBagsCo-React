@@ -228,7 +228,7 @@ export default function PanelAdmin() {
           <div>
             <Link to="/panel-admin-v3">
               <button type="button" className="btn-admin">
-                Agregar Cupon
+                Gestion Cupones
               </button>
             </Link>
           </div>

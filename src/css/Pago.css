@@ -1,0 +1,294 @@
+/* ─── PAGO PAGE ─── */
+
+.pago-layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.pago-section-title {
+  grid-column: 1 / -1;
+  font-size: 16px;
+  font-weight: 700;
+  color: #7a5c3a;
+  margin: 10px 0 0 0;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #f0ece6;
+}
+
+.form-group input[readonly] {
+  background: #f5f3f0;
+  color: #888;
+  cursor: not-allowed;
+}
+
+/* ─── RESUMEN LATERAL ─── */
+.pago-resumen {
+  background: #fff;
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 80px;
+}
+
+.pago-resumen h3 {
+  font-size: 16px;
+  color: #2b1f12;
+  margin-bottom: 18px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f0ece6;
+}
+
+.resumen-items {
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.resumen-item {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #f5f3f0;
+}
+
+.resumen-item:last-child {
+  border-bottom: none;
+}
+
+.resumen-item img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.resumen-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.resumen-item-brand {
+  font-size: 10px;
+  color: #7a5c3a;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.resumen-item-name {
+  font-size: 13px;
+  color: #1a1a1a;
+}
+
+.resumen-item-qty {
+  font-size: 11px;
+  color: #999;
+}
+
+.resumen-item-price {
+  font-size: 14px;
+  font-weight: 700;
+  color: #2b1f12;
+  white-space: nowrap;
+}
+
+.resumen-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 6px;
+}
+
+.resumen-row.discount {
+  color: #27ae60;
+  font-weight: 600;
+}
+
+.resumen-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: 700;
+  color: #2b1f12;
+  padding-top: 10px;
+  border-top: 2px solid #2b1f12;
+  margin-top: 8px;
+}
+
+.btn-volver {
+  display: inline-block;
+  padding: 12px 28px;
+  background: #111;
+  color: white;
+  text-decoration: none;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.btn-volver:hover {
+  background: #b08d57;
+  transform: translateY(-2px);
+}
+
+/* ─── FACTURA PAGE ─── */
+.factura-card {
+  max-width: 700px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 18px;
+  padding: 35px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.factura-seccion {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f0ece6;
+}
+
+.factura-seccion:last-of-type {
+  border-bottom: none;
+}
+
+.factura-seccion h3 {
+  font-size: 15px;
+  color: #7a5c3a;
+  margin-bottom: 14px;
+}
+
+.factura-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.factura-grid > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.factura-label {
+  font-size: 11px;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.factura-valor {
+  font-size: 14px;
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+/* Productos en factura */
+.factura-producto {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid #f5f3f0;
+}
+
+.factura-producto:last-child {
+  border-bottom: none;
+}
+
+.factura-producto img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.factura-producto-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.factura-producto-marca {
+  font-size: 10px;
+  color: #7a5c3a;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.factura-producto-nombre {
+  font-size: 13px;
+  color: #1a1a1a;
+}
+
+.factura-producto-qty {
+  font-size: 12px;
+  color: #999;
+}
+
+.factura-producto-precio {
+  font-size: 14px;
+  font-weight: 700;
+  color: #2b1f12;
+  white-space: nowrap;
+}
+
+/* Totales en factura */
+.factura-totales {
+  background: #faf8f5;
+  border-radius: 12px;
+  padding: 18px;
+}
+
+.factura-total-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 6px;
+}
+
+.factura-total-row.descuento {
+  color: #27ae60;
+}
+
+.factura-total-row.final {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2b1f12;
+  padding-top: 10px;
+  border-top: 2px solid #e0dbd4;
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+.factura-numero {
+  text-align: center;
+  font-size: 12px;
+  color: #bbb;
+  margin: 16px 0 10px;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 1px;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 850px) {
+  .pago-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .pago-resumen {
+    position: static;
+    order: -1;
+  }
+
+  .factura-grid {
+    grid-template-columns: 1fr;
+  }
+}
