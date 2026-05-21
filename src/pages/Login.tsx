@@ -56,7 +56,7 @@ export default function Login() {
     if (persona.rol === "USER") {
       navigate("/")
     } else if (persona.rol === "ADMIN") {
-      navigate("/panelAdmin")
+      navigate("/panel-admin")
     }
   }
 
