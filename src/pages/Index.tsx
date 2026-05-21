@@ -7,6 +7,7 @@ import ProductCard from "../components/ProductCard"
 import Hero from "../components/Hero"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
+import FashionQuote from "../components/FashionQuote"
 
 import "../css/Index.css"
 
@@ -43,6 +44,8 @@ export default function Index() {
     <>
       <Header />
       <Hero />
+
+      <FashionQuote />
 
       <div className="products">
         <h2>Todos los bolsos</h2>
