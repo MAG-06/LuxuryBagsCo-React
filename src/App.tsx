@@ -1,21 +1,38 @@
 import { Routes, Route } from "react-router-dom"
-import Header from "./components/Header"
-import Footer from "./components/Footer"
 import Index from "./pages/Index"
 import DetalleProducto from "./pages/DetalleProducto"
+import Registro from "./pages/Registro"
+import Login from "./pages/Login"
+import PanelAdmin from "./pages/PanelAdmin"
+import PanelAdminV2 from "./pages/PanelAdminV2"
+import Perfil from "./pages/Perfil"
+import Promociones from "./pages/Promociones"
+import PanelAdminV3 from "./pages/PanelAdminV3"
+import Pago from "./pages/Pago"
+import Factura from "./pages/Factura"
 
 
 export default function App() {
   return (
     <>
-      <Header />
-
       <Routes>
         <Route path="/" element={<Index />} />
+
         <Route path="/detalle-producto" element={<DetalleProducto />} />
+
+        <Route path="/registro" element={<Registro />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/panel-admin" element={<PanelAdmin />} />
+        <Route path="/panel-admin-v2" element={<PanelAdminV2 />} />
+
+        <Route path="/perfil" element={<Perfil />} />
+        <Route path="/promociones" element={<Promociones />} />
+        <Route path="/panel-admin-v3" element={<PanelAdminV3 />} />
+        <Route path="/pago" element={<Pago />} />
+        <Route path="/factura" element={<Factura />} />
       </Routes>
 
-      <Footer />
+
     </>
   )
 }

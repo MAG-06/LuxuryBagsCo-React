@@ -1,0 +1,155 @@
+/* HERO PROMOCIONES */
+.hero-promos {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+}
+
+.hero-promos img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.65);
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  width: 90%;
+}
+
+.hero-text h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.hero-text p {
+  font-size: 15px;
+}
+
+/* CONTENEDOR */
+.promociones-container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 35px auto 50px auto;
+}
+
+.promociones-container h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #1a1a1a;
+}
+
+.promociones-subtitle {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+/* GRID DE PROMOCIONES */
+.promociones-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* TARJETA */
+.promo-card {
+  width: 300px;
+  background: white;
+  border: 1px solid #e8e2da;
+  border-radius: 12px;
+  padding: 22px 20px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+}
+
+.promo-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.10);
+}
+
+.promo-badge {
+  display: inline-block;
+  background: #1a1a1a;
+  color: white;
+  padding: 6px 12px;
+  font-size: 12px;
+  border-radius: 30px;
+  margin-bottom: 15px;
+  letter-spacing: 0.5px;
+}
+
+.promo-badge.destacado {
+  background: #7a5c3a;
+}
+
+.promo-card h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: #2b1f12;
+}
+
+.promo-descripcion {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.promo-codigo-box {
+  background: #faf8f5;
+  border: 1px dashed #c8b8a6;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.promo-label {
+  display: block;
+  font-size: 12px;
+  color: #7a5c3a;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.promo-codigo {
+  font-size: 18px;
+  font-weight: bold;
+  color: #1a1a1a;
+  word-break: break-word;
+}
+
+/* LINK ACTIVO EN EL MENÚ */
+.menu a.active {
+  color: #7a5c3a;
+  font-weight: bold;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero-promos {
+    height: 220px;
+  }
+
+  .hero-text h2 {
+    font-size: 24px;
+  }
+
+  .hero-text p {
+    font-size: 14px;
+  }
+
+  .promo-card {
+    width: 100%;
+  }
+}
